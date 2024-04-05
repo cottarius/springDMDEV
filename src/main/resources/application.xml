@@ -11,11 +11,7 @@
         <constructor-arg name="username" type="java.lang.String" value="postgres"/>
         <constructor-arg name="poolSize" type="java.lang.Integer" value="10"/>
         <constructor-arg name="args" type="java.util.List">
-            <list>
-                <value>arg1=value1</value>
-                <value>arg2=value2</value>
-                <ref bean="driver"/>
-            </list>
+            <null/>
         </constructor-arg>
         <constructor-arg name="properties" type="java.util.Map">
             <map>
@@ -24,6 +20,14 @@
                 <entry key="driver" value-ref="driver"/>
             </map>
         </constructor-arg>
+<!--        Внедрение через сеттер (Properties)-->
+        <property name="properties">
+            <map>
+                <entry key="url" value="postgresurl"/>
+                <entry key="password" value="123"/>
+                <entry key="driver" value-ref="driver"/>
+            </map>
+        </property>
     </bean>
 
     <bean id="companyRepository" class="ru.cotarius.springDMDEV.database.repository.CompanyRepository" factory-method="of">
